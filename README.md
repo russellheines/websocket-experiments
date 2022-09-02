@@ -1,17 +1,9 @@
 # websocket-experiments
 
-## Run locally
-
-```
-C:\Dev> git clone https://github.com/russellheines/websocket-experiments.git
-
-C:\Dev> cd websocket-experiments
-
-C:\Dev\websocket-experiments> npm install
-
-C:\Dev\websocket-experiments> node index.js
-```
-
 ## References
 
 - https://socket.io/get-started/chat
+- https://socket.io/get-started/private-messaging-part-3
+- https://socket.io/get-started/private-messaging-part-4
+- https://cloud.google.com/run/docs/tutorials/websockets
+- https://cloud.google.com/run/docs/triggering/websockets
