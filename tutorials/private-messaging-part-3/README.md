@@ -1,18 +1,22 @@
 # socket.io tutorial
 
-## Running the frontend
+## Clone the repo
 
 ```
 git clone https://github.com/russellheines/websocket-experiments.git
+```
 
+## Run the frontend
+
+```
 cd websocket-experiments/tutorials/private-messaging-3
 
 npm install
 
-npm start
+npm run serve
 ```
 
-## Running the backend
+## Run the server
 
 ```
 cd websocket-experiments/tutorials/private-messaging-3/server
