@@ -1,5 +1,27 @@
 # websocket-experiments
 
+Some experiments with web sockets running on Google Cloud Platform.
+
+https://chat-firestore-6tl7g2wh6a-uk.a.run.app/
+
+## Run locally
+
+```
+cd websocket-experiments/chat-firestore
+
+npm install
+
+node index.js
+```
+
+## Deploy to Google Cloud Platform
+
+```
+cd websocket-experiments/chat-firestore
+
+gcloud run deploy
+```
+
 ## References
 
 - https://socket.io/get-started/chat
@@ -7,3 +29,4 @@
 - https://socket.io/get-started/private-messaging-part-4
 - https://cloud.google.com/run/docs/tutorials/websockets
 - https://cloud.google.com/run/docs/triggering/websockets
+- https://cloud.google.com/firestore/docs/query-data/listen
