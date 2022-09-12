@@ -2,7 +2,7 @@
 
 Some experiments with web sockets running on Google Cloud Platform.
 
-https://chat-firestore-6tl7g2wh6a-uk.a.run.app/
+https://chat-gcp-6tl7g2wh6a-uk.a.run.app/
 
 ## Run locally
 
