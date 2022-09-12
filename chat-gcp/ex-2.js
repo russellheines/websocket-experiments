@@ -4,9 +4,9 @@ const db = new Firestore({
     projectId: 'getting-started-337714',
   });  
 
-const chatRef = db.collection('Chats').doc('JTg0spcZTVtFzQgs2d3y');
+const chatRef = db.collection('Chats').doc('IEhO2IZhYd2a0kBcBWNx');
 
-const observer = chatRef.onSnapshot(docSnapshot => {
+chatRef.onSnapshot(docSnapshot => {
     console.log(`Received doc snapshot: ${docSnapshot}`);
     console.log(docSnapshot.data());
 

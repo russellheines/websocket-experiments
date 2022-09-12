@@ -7,17 +7,17 @@ https://chat-firestore-6tl7g2wh6a-uk.a.run.app/
 ## Run locally
 
 ```
-cd websocket-experiments/chat-firestore
+cd websocket-experiments/chat-gcp
 
 npm install
 
-node index.js
+npm start
 ```
 
 ## Deploy to Google Cloud Platform
 
 ```
-cd websocket-experiments/chat-firestore
+cd websocket-experiments/chat-gcp
 
 gcloud run deploy
 ```

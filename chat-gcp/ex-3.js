@@ -6,7 +6,7 @@ const db = new Firestore({
 
 const query = db.collection('Chats').where('Room', '==', '1').orderBy('Timestamp');
 
-const observer = query.onSnapshot(querySnapshot => {
+query.onSnapshot(querySnapshot => {
     console.log(`Received query snapshot of size ${querySnapshot.size}`);
 
     querySnapshot.docChanges().forEach(change => {

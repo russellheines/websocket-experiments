@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node ex-5.js"
+    "start": "node ex-6.js"
   },
 "dependencies": {
     "@google-cloud/firestore": "^6.0.0",

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="default.css"/>
+</head>
+<body>
+    <div class="chat-container">
+        <div id="chats" class="chats"></div>
+        <div>
+            <form id="form" action="">
+                <input id="input" autocomplete="off" placeholder="Type message"/>
+            </form>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var roomId = window.location.search.replace("?roomId=","");
+                
+        var socket = io({
+            auth: {
+                roomId: roomId
+            }
+        });
+
+        var chats = document.getElementById('chats');
+        var form = document.getElementById('form');
+        var input = document.getElementById('input');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (input.value) {
+                socket.emit('chat', input.value);
+            input.value = '';
+            }
+        });
+
+        socket.on('connect', function(msg) {
+            // in case of a server restart, clear existing data
+            while (chats.firstChild) {
+                chats.removeChild(chats.firstChild);
+            }
+        });
+
+        socket.on('room', function(msg) {
+            window.location.href = '?roomId=123';
+        });
+
+        socket.on('chat', function(msg) {
+            var item = document.createElement('div');
+            item.textContent = msg;
+            chats.appendChild(item);
+            window.scrollTo(0, document.body.scrollHeight);
+        });
+    </script>
+</body>
+</html>

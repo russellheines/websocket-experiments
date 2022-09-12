@@ -25,7 +25,7 @@ io.on('connection', (socket) => {
             if (change.type === 'added') {
                 let data = change.doc.data();
                 console.log('New chat: ', data);
-                socket.emit('chat message', data.Content);
+                socket.emit('chat', data.Content);
             }
         });
     
@@ -34,7 +34,7 @@ io.on('connection', (socket) => {
         }
     );
 
-    socket.on('chat message', (msg) => {
+    socket.on('chat', (msg) => {
         const chat = db.collection('Chats').add({
             Room: '1',
             Content: msg,

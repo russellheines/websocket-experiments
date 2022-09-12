@@ -6,8 +6,8 @@ const db = new Firestore({
 
 console.log('start');
 
-async function quickstart() {
-    const chatRef = db.collection('Chats').doc('JTg0spcZTVtFzQgs2d3y');
+async function getDocument() {
+    const chatRef = db.collection('Chats').doc('IEhO2IZhYd2a0kBcBWNx');
     const doc = await chatRef.get();
     if (!doc.exists) {
       console.log('No such document!');
@@ -16,6 +16,6 @@ async function quickstart() {
     }
 }
 
-quickstart();
+getDocument();
 
 console.log('end');

@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-color: rgb(237, 235, 233);
+}
+
+.chat-container {
+  margin: auto; /* center horizontally */
+  margin-top: 20px;
+  height: 72vh;
+  width: 72vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;  /* https://stackoverflow.com/questions/4575826/how-to-push-a-footer-to-the-bottom-of-page-when-content-is-short-or-missing */
+  background-color: rgb(255, 255, 255);
+  box-shadow:
+  0 2px 2px 0 rgba(0, 0, 0, 0.14),
+  0 3px 1px -2px rgba(0, 0, 0, 0.2),
+  0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.chats {
+  padding: 4px;
+  color: #4d4d4d;
+  line-height: 1.6;
+  overflow-y: auto;
+}
+
+input {  
+  padding: 4px;
+  width: 100%;
+  font-size: 16px;  /* https://stackoverflow.com/questions/2989263/disable-auto-zoom-in-input-text-tag-safari-on-iphone */
+}
+
+@media only screen and (min-width: 768px) {
+  input {
+    font-size: 14px;
+  }
+}
