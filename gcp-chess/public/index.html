@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="default.css"/>
+</head>
+<body>
+    <div id="board" class="board">
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+
+        var selected = null;
+
+        function draw(fen) {
+
+            const matrix = [[null, null, null, null, null, null, null, null],
+                [null, null, null, null, null, null, null, null],
+                [null, null, null, null, null, null, null, null],
+                [null, null, null, null, null, null, null, null],
+                [null, null, null, null, null, null, null, null],
+                [null, null, null, null, null, null, null, null],
+                [null, null, null, null, null, null, null, null],
+                [null, null, null, null, null, null, null, null]];
+
+            let position = 0;
+            for (let i=0; i<8; i++) {
+                for (let j=0; j<8;) {
+                    let c = fen.charAt(position++);
+                    if (c == '/') {
+                        continue;
+                    }
+                    else if (isNaN(parseInt(c))) {
+                        matrix[i][j] = c;
+                        j++;
+                    }
+                    else {
+                        j+=parseInt(c);
+                    }                
+                }            
+            }
+
+            const board = document.getElementById("board");
+            while (board.firstChild) {
+                board.removeChild(board.firstChild);
+            }
+
+            for (let row = 0; row <= 7; row++) {
+                for (let col = 0; col <= 7; col++) {
+                    const square = document.createElement("div");
+
+                    let classNames = [];
+                    classNames.push("square");
+                    classNames.push(row % 2 === col % 2 ? "light" : "dark");
+                    square.className = classNames.join(' ');
+                    square.onclick = () => {
+                        const squareId = String.fromCharCode(97 + col) + (8 - row);  // 97 = 'a'                        
+
+                        if (!selected) {
+                            selected = squareId;
+                            console.log('from ' + squareId);
+                        }
+                        else {
+                            console.log('to ' + squareId);
+
+                            const fromTo = {};
+                            fromTo['from'] = selected;
+                            fromTo['to'] = squareId;
+
+                            socket.emit('move', fromTo);
+                            selected = null;
+                        }
+                    }
+
+                    if (matrix[row][col] !== null) {
+                        const piece = document.createElement("img");
+                        switch(matrix[row][col]) {
+                            case 'r':
+                                piece.src = 'img/rdt45.svg';
+                                break;
+                            case 'n':
+                                piece.src = 'img/ndt45.svg';
+                                break;
+                            case 'b':
+                                piece.src = 'img/bdt45.svg';
+                                break;
+                            case 'q':
+                                piece.src = 'img/qdt45.svg';
+                                break;
+                            case 'k':
+                                piece.src = 'img/kdt45.svg';
+                                break;
+                            case 'p':
+                                piece.src = 'img/pdt45.svg';
+                                break;
+                            case 'R':
+                                piece.src = 'img/rlt45.svg';
+                                break;
+                            case 'N':
+                                piece.src = 'img/nlt45.svg';
+                                break;
+                            case 'B':
+                                piece.src = 'img/blt45.svg';
+                                break;
+                            case 'Q':
+                                piece.src = 'img/qlt45.svg';
+                                break;
+                            case 'K':
+                                piece.src = 'img/klt45.svg';
+                                break;
+                            case 'P':
+                                piece.src = 'img/plt45.svg';
+                                break;
+                        }
+
+                        square.appendChild(piece);
+                    }
+
+                    board.appendChild(square);
+                }
+            }
+        }
+
+        //const initial = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";        
+
+        socket.emit('join');
+
+        socket.on('fen', fen => {
+            console.log(fen);
+            draw(fen);
+        });
+
+    </script>
+</body>
+</html>

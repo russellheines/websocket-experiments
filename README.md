@@ -2,12 +2,12 @@
 
 Some experiments with web sockets running on Google Cloud Platform.
 
-https://chat-gcp-6tl7g2wh6a-uk.a.run.app/
+https://gcp-chess-6tl7g2wh6a-uk.a.run.app/
 
 ## Run locally
 
 ```
-cd websocket-experiments/chat-gcp
+cd websocket-experiments/gcp-chess
 
 npm install
 
@@ -17,7 +17,7 @@ npm start
 ## Deploy to Google Cloud Platform
 
 ```
-cd websocket-experiments/chat-gcp
+cd websocket-experiments/gcp-chess
 
 gcloud run deploy
 ```
@@ -30,3 +30,5 @@ gcloud run deploy
 - https://cloud.google.com/run/docs/tutorials/websockets
 - https://cloud.google.com/run/docs/triggering/websockets
 - https://cloud.google.com/firestore/docs/query-data/listen
+- https://github.com/jhlywa/chess.js
+- https://cloud.google.com/run/docs/deploying-source-code

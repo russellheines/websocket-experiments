@@ -1,0 +1,82 @@
+div, img {
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-color: rgb(237, 235, 233);
+  font-size: 12px;
+}
+
+.board {
+  height: 96vw;
+  width: 96vw;
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow:
+  0 2px 2px 0 rgba(0, 0, 0, 0.14),
+  0 3px 1px -2px rgba(0, 0, 0, 0.2),
+  0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+@media only screen and (orientation: landscape) {
+  .board {
+      height: 80vh;
+      width: 80vh;
+      margin: 4px;
+  }
+}
+
+.square {
+  width: 12.5%;
+  height: 12.5%;
+}
+
+.light {
+  background-color: rgb(240, 217, 181);
+}
+
+.light.selected {
+  background-color: rgb(130, 151, 105);
+}
+
+.light.legal:hover, .light.legal-capture:hover {
+  background-color: rgb(174, 177, 135);
+}
+
+.light.lastFrom, .light.lastTo {
+  background-color: rgb(205, 210, 106);
+}
+
+.dark {
+  background-color: rgb(181, 136, 99);
+}
+
+.dark.selected {
+  background-color: rgb(100, 111, 64);
+}
+
+.dark.legal:hover, .dark.legal-capture:hover {
+  background-color: rgb(132, 121, 78);
+}
+
+.dark.lastFrom, .dark.lastTo {    
+  background-color: rgb(170, 162, 58);
+}
+
+.legal {
+  background-image: radial-gradient(rgba(20, 85, 30, 0.5) 19%, rgba(0, 0, 0, 0) 20%);
+}
+
+.legal-capture {
+  background-image: radial-gradient(transparent 0%, transparent 79%, rgba(20, 85, 0, 0.3) 80%);
+}
+
+.check {
+  background-image: radial-gradient(ellipse at center, red 0%, #e70000 25%, rgba(169,0,0,0) 89%, rgba(158,0,0,0) 100%);
+}
